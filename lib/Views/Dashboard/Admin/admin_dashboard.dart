@@ -39,7 +39,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
       label: 'Inventory',
       color: Color(0xFFFF9800),
       onTap: () {
-        context.go('/trade-blotter');
+        context.push('/trade-blotter');
       },
     ),
     MenuItemModel(
@@ -79,7 +79,7 @@ class _AdminDashboardState extends State<AdminDashboard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.primarycolor,
+      backgroundColor: AppColor.primaryColor,
       body: SafeArea(
         child: Column(
           children: [

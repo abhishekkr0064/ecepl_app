@@ -29,7 +29,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.primarycolor,
+      backgroundColor: AppColor.primaryColor,
       body: SafeArea(
         child: Column(
           children: [
@@ -76,7 +76,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         fontfemly: 'Poppins',
                         fontweight: FontWeight.w600,
                         fontsize: 24.sp,
-                        color: AppColor.primarycolor,
+                        color: AppColor.primaryColor,
                       ),
 
                       const SizedBox(height: 4),
@@ -130,7 +130,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           fontweight: FontWeight.normal,
                           fontsize: 12,
                           ontap: () {},
-                          color: AppColor.primarycolor,
+                          color: AppColor.primaryColor,
                         ),
                       ),
 

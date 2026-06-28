@@ -22,7 +22,7 @@ class AppButton extends StatelessWidget {
     this.tittle = "Create New Account",
     this.fontsize = 19,
     this.fontcolor = AppColor.whiteColor,
-    this.bgcolor = AppColor.primarycolor,
+    this.bgcolor = AppColor.primaryColor,
     this.borderradius = 15,
     this.ontap,
     this.fontweight = FontWeight.w500,

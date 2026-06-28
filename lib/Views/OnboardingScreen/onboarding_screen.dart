@@ -16,16 +16,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   int _currentPage = 0;
 
   final List<OnboardingData> _pages = [
-    // OnboardingData(
-    //   imagePath: 'assets/Images/ob1.png',
-    //   title: 'Welcome to ECEPL',
-    //   description: 'Discover the best experience tailored just for you.',
-    // ),
-    // OnboardingData(
-    //   imagePath: 'assets/Images/ob2.png',
-    //   title: 'Stay Connected',
-    //   description: 'Access everything you need, anytime and anywhere.',
-    // ),
     OnboardingData(
       imagePath: 'assets/Images/ob1.png',
       title: 'Welcome to ECEPL',
@@ -116,7 +106,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   height: 8.h,
                   decoration: BoxDecoration(
                     color: _currentPage == index
-                        ? AppColor.primarycolor
+                        ? AppColor.primaryColor
                         : AppColor.blackColor.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(4.r),
                   ),
@@ -127,32 +117,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             SizedBox(height: 32.h),
 
             /// ─── Next / Get Started Button ─────────────────────────────
-            // Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 24.w),
-            //   child: SizedBox(
-            //     width: double.infinity,
-            //     height: 52.h,
-            //     child: ElevatedButton(
-            //       onPressed: _nextPage,
-            //       style: ElevatedButton.styleFrom(
-            //         backgroundColor: AppColor.textFieldBorderColor,
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(15.r),
-            //         ),
-            //         elevation: 0,
-            //       ),
-            //       child: Text(
-            //         _currentPage == _pages.length - 1 ? 'Get Started' : 'Next',
-            //         style: TextStyle(
-            //           fontFamily: 'Roboto',
-            //           fontSize: 15.sp,
-            //           fontWeight: FontWeight.w600,
-            //           color: Colors.white,
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
             AppButton(
               horizontal: 24.w,
               tittle: _currentPage == _pages.length - 1

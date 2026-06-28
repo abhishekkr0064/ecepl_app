@@ -1,4 +1,5 @@
 import 'package:ecepl_app/Config/Color/app_color.dart';
+import 'package:ecepl_app/Config/Components/app_back_button.dart';
 import 'package:ecepl_app/Views/Dashboard/trade_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -155,6 +156,7 @@ class _CourseTableScreenState extends State<CourseTableScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xFFF8F8FF),
+      appBar: AppBackButton(title: 'Trade Blotter') as PreferredSizeWidget,
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
@@ -162,15 +164,6 @@ class _CourseTableScreenState extends State<CourseTableScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// ── Title ──────────────────────────────────────────────
-              Text(
-                'Data Table',
-                style: TextStyle(
-                  fontFamily: 'Roboto',
-                  fontSize: 20.sp,
-                  fontWeight: FontWeight.w700,
-                  color: const Color(0xFF1A1A2E),
-                ),
-              ),
               SizedBox(height: 14.h),
 
               /// ── Search + Add New ───────────────────────────────────
@@ -210,7 +203,7 @@ class _CourseTableScreenState extends State<CourseTableScreen> {
                     : ListView.separated(
                         itemCount: _paginated.length,
                         // separatorBuilder: (_, __) =>
-                        separatorBuilder: (_, __) => SizedBox(height: 10.h),
+                        separatorBuilder: (_, _) => SizedBox(height: 10.h),
                         itemBuilder: (_, i) => _CourseCard(
                           course: _paginated[i],
                           onView: () {},
@@ -294,7 +287,7 @@ class _AddNewButton extends StatelessWidget {
         height: 44.h,
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         decoration: BoxDecoration(
-          color: AppColor.primarycolor,
+          color: AppColor.primaryColor,
           borderRadius: BorderRadius.circular(10.r),
         ),
         child: Center(
@@ -533,7 +526,7 @@ class _TableFooter extends StatelessWidget {
           style: TextStyle(
             fontFamily: 'Roboto',
             fontSize: 11.sp,
-            color: AppColor.primarycolor,
+            color: AppColor.primaryColor,
             fontWeight: FontWeight.w500,
           ),
         ),
@@ -559,12 +552,12 @@ class _TableFooter extends StatelessWidget {
                   height: 30.w,
                   decoration: BoxDecoration(
                     color: isActive
-                        ? AppColor.primarycolor
+                        ? AppColor.primaryColor
                         : AppColor.whiteColor,
                     borderRadius: BorderRadius.circular(8.r),
                     border: Border.all(
                       color: isActive
-                          ? AppColor.primarycolor
+                          ? AppColor.primaryColor
                           : Colors.grey.shade300,
                     ),
                   ),

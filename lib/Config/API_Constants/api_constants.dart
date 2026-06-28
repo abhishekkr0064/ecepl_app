@@ -7,8 +7,10 @@ class ApiConstants {
   // static const String imageUrl = 'http://10.0.2.2:5000';
 
   //  Note: 'https://api.namedpatientprogram.com/api' is used for Production
-  static const String baseUrl = 'https://api.namedpatientprogram.com/api';
+  static const String baseUrl = ' https://upptcl.org.in/Inventory_CI/';
 
   // // // For Image URL
-  static const String imageUrl = 'https://api.namedpatientprogram.com';
+  // static const String imageUrl = 'https://api.namedpatientprogram.com';
+
+  static const String projectNamesUrl = '$baseUrl/app/projects';
 }
