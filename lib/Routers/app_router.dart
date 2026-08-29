@@ -16,6 +16,10 @@ class AppRouter {
         path: '/trade-blotter',
         builder: (context, state) => const CourseTableScreen(),
       ),
+      GoRoute(
+        path: '/items-record',
+        builder: (context, state) => const ItemsRecord(),
+      ),
     ],
   );
 }

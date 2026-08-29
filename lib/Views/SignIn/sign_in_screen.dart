@@ -1,3 +1,4 @@
+import 'package:ecepl_app/Bloc/Project_names/project_names_bloc.dart';
 import 'package:ecepl_app/Config/App_assets/app_assets.dart';
 import 'package:ecepl_app/Config/Color/app_color.dart';
 import 'package:ecepl_app/Config/Components/app_button.dart';
@@ -6,7 +7,9 @@ import 'package:ecepl_app/Config/Components/app_image.dart';
 import 'package:ecepl_app/Config/Widget/app_text.dart';
 import 'package:ecepl_app/Config/Widget/custom_password_field.dart';
 import 'package:ecepl_app/Config/Widget/login_text_field.dart';
+import 'package:ecepl_app/Data/Model/Projects_name/projects_name_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,10 +24,20 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController usernameController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
-  final ValueNotifier<String?> selectedItem = ValueNotifier<String?>(null);
+  // final ValueNotifier<String?> selectedItem = ValueNotifier<String?>(null);
+  // final ValueNotifier<ProjectNameModel?> selectedProject =
+  //     ValueNotifier<ProjectNameModel?>(null);
 
-  String selectedRole = "";
-  final List<String> roleOptions = ["Admin", "User"];
+  ProjectNameModel? selectedProject;
+  final ValueNotifier<String?> selectedItem = ValueNotifier<String?>(null);
+  // final List<String> roleOptions = ["Admin", "User"];
+
+  @override
+  void initState() {
+    super.initState();
+
+    context.read<ProjectNamesBloc>().add(FetchProjectNamesEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,16 +108,71 @@ class _SignInScreenState extends State<SignInScreen> {
                         width: 213.w,
                       ),
                       SizedBox(height: 10.h),
-                      AppDropdown(
-                        label: "Role",
-                        hint: "Select Role",
-                        items: const ["Admin", "User"],
-                        valueListenable: selectedItem,
-                        onChanged: (value) {
-                          selectedItem.value = value;
+                      BlocBuilder<ProjectNamesBloc, ProjectNamesState>(
+                        builder: (context, state) {
+                          final isLoading = state is ProjectNamesLoading;
+
+                          return AppDropdownSearch<ProjectNameModel>(
+                            label: "Project",
+                            hint: "Select Project",
+                            prefixIcon: Icons.folder_outlined,
+                            enabled: !isLoading,
+
+                            selectedItem: selectedProject,
+
+                            items: state is ProjectNamesLoaded
+                                ? state.projectNames
+                                : [],
+
+                            itemAsString: (project) => project.projectName,
+
+                            onChanged: (project) {
+                              setState(() {
+                                selectedProject = project;
+                              });
+
+                              debugPrint(
+                                "Project Name : ${project?.projectName}",
+                              );
+                              debugPrint(
+                                "Project Key  : ${project?.projectKey}",
+                              );
+                            },
+
+                            // Called when user opens the dropdown
+                            asyncItems: (filter) async {
+                              final bloc = context.read<ProjectNamesBloc>();
+                              final currentState = bloc.state;
+
+                              // Already loaded — just return it
+                              if (currentState is ProjectNamesLoaded) {
+                                return currentState.projectNames;
+                              }
+
+                              // Only dispatch if not already mid-fetch (avoids double events
+                              // if initState's fetch is still running when the user taps early)
+                              if (currentState is! ProjectNamesLoading) {
+                                bloc.add(FetchProjectNamesEvent());
+                              }
+
+                              // Wait for either success or failure — don't hang forever
+                              final result = await bloc.stream.firstWhere(
+                                (s) =>
+                                    s is ProjectNamesLoaded ||
+                                    s is ProjectNamesError,
+                              );
+
+                              if (result is ProjectNamesLoaded) {
+                                return result.projectNames;
+                              }
+
+                              // Error state — return empty so emptyBuilder/errorBuilder can show
+                              return [];
+                            },
+                          );
                         },
                       ),
-                      SizedBox(height: 10.h),
+                      SizedBox(height: 16.h),
                       AppTextField(
                         controller: usernameController,
                         label: "Full Name",
