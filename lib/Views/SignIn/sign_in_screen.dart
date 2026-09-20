@@ -7,7 +7,7 @@ import 'package:ecepl_app/Config/Components/app_image.dart';
 import 'package:ecepl_app/Config/Widget/app_text.dart';
 import 'package:ecepl_app/Config/Widget/custom_password_field.dart';
 import 'package:ecepl_app/Config/Widget/login_text_field.dart';
-import 'package:ecepl_app/Data/Model/Projects_name/projects_name_model.dart';
+import 'package:ecepl_app/Data/Model/Projects_Name/projects_name_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

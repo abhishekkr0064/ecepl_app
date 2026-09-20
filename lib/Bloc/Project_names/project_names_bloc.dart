@@ -1,5 +1,5 @@
-import 'package:ecepl_app/Data/Model/Projects_name/projects_data.dart';
-import 'package:ecepl_app/Data/Model/Projects_name/projects_name_model.dart';
+import 'package:ecepl_app/Data/Model/Projects_Name/projects_data.dart';
+import 'package:ecepl_app/Data/Model/Projects_Name/projects_name_model.dart';
 import 'package:ecepl_app/Data/Network/app_exception.dart';
 import 'package:ecepl_app/Data/Repository/Projects_name/projects_name_repository.dart';
 import 'package:equatable/equatable.dart';

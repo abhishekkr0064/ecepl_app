@@ -1,4 +1,4 @@
-import 'package:ecepl_app/Data/Model/Projects_name/projects_data.dart';
+import 'package:ecepl_app/Data/Model/Projects_Name/projects_data.dart';
 import 'package:ecepl_app/Config/API_Constants/api_constants.dart';
 import 'package:ecepl_app/Data/Network/network_service_apis.dart';
 

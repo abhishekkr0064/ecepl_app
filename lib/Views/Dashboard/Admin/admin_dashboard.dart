@@ -34,6 +34,9 @@ class _AdminDashboardState extends State<AdminDashboard> {
       icon: LucideIcons.folderTree,
       label: 'Item\nGroup',
       color: const Color(0xFF8B5CF6), // Purple
+      onTap: () {
+        context.push('/item-group');
+      },
     ),
     MenuItemModel(
       icon: LucideIcons.clipboardList,

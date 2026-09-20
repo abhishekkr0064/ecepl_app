@@ -1,4 +1,4 @@
-import 'package:ecepl_app/Data/Model/Projects_name/projects_name_response.dart';
+import 'package:ecepl_app/Data/Model/Projects_Name/projects_name_response.dart';
 
 class ProjectsData {
   final bool status;

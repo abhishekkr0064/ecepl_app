@@ -20,6 +20,11 @@ class AppRouter {
         path: '/items-record',
         builder: (context, state) => const ItemsRecord(),
       ),
+
+      GoRoute(
+        path: '/item-group',
+        builder: (context, state) => const ItemGroup(),
+      ),
     ],
   );
 }
